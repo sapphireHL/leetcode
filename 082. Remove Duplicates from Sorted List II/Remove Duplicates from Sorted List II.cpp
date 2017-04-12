@@ -9,24 +9,24 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        if(head == NULL) return NULL;
-        ListNode *p = head, *current = new ListNode(0), *result = current;
-        while(p != NULL && p->next != NULL){
+        ListNode *dummy = new ListNode(-1), *pre = dummy, *p = head;
+        dummy->next = head;
+        while(p && p->next){
             if(p->val == p->next->val){
-                int cur = p->val;
-                while(p != NULL && p->val == cur)
+                while(p && p->next && p->val == p->next->val)
                     p = p->next;
-                if(p == NULL)
-                    current->next = NULL;
+                if(!p->next)
+                    pre->next = NULL;
+                else{
+                    pre->next = p->next;
+                    p = p->next;
+                }
             }
             else{
-                current->next = p;
-                current = current->next;
+                pre = pre->next;
                 p = p->next;
             }
         }
-        if(p != NULL)
-            current->next = p;
-        return result->next;
+        return dummy->next;
     }
 };
