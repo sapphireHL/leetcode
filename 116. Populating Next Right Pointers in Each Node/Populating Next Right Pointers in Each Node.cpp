@@ -10,22 +10,16 @@ class Solution {
 public:
     void connect(TreeLinkNode *root) {
         if(root == NULL) return;
-        queue<TreeLinkNode *> q;
-        q.push(root);
-        while(!q.empty()){
-            vector<TreeLinkNode *> tmp;
-            while(!q.empty()){
-                tmp.push_back(q.front());
-                q.pop();
+        TreeLinkNode *pre = root;
+        TreeLinkNode *cur = NULL;
+        while(pre->left){
+            cur = pre;
+            while(cur){
+                cur->left->next = cur->right;
+                if(cur->next) cur->right->next = cur->next->left;
+                cur = cur->next;
             }
-            for(int i=0; i<tmp.size()-1; i++){
-                tmp[i]->next = tmp[i+1];
-            }
-            tmp[tmp.size()-1]->next = NULL;
-            for(int i=0; i<tmp.size(); i++){
-                if(tmp[i]->left) q.push(tmp[i]->left);
-                if(tmp[i]->right) q.push(tmp[i]->right);
-            }
+            pre = pre->left;
         }
     }
 };
