@@ -1,7 +1,7 @@
 class Solution {
 public:
-    unordered_map<int, vector<int>> mp;
     vector<int> arr;
+    
     Solution(vector<int> nums) {
         arr = nums;
     }
