@@ -4,13 +4,13 @@ public:
 	vector<double> res;
 
 	void dfs(string from, string to, double& value, unordered_map<string, bool>& visit, bool& find) {
-    	if(find) return;
+    		if(find) return;
 		if (!g.count(from) || !g.count(to)) {
 			return;
 		}
 		if (from == to) {
 			res.push_back(value);
-            find = true;
+            		find = true;
 			return;
 		}
 		visit[from] = true;
@@ -21,7 +21,7 @@ public:
 				value *= val;
 				dfs(next, to, value, visit, find);
 				value /= val;
-                if(find) return;
+                		if(find) return;
 			}
 		}
 	}
@@ -38,9 +38,9 @@ public:
 			string from = queries[i].first, to = queries[i].second;
 			double value = 1.0;
 			unordered_map<string, bool> visit;
-            bool find = false;
+            		bool find = false;
 			dfs(from, to, value, visit, find);
-            if(res.size() <= i) res.push_back(-1);
+            		if(res.size() <= i) res.push_back(-1);
 		}
 		return res;
 	}
