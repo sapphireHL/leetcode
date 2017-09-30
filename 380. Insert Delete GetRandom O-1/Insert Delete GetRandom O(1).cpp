@@ -25,7 +25,7 @@ public:
 	bool remove(int val) {
 		if (!set.count(val))
 			return false;
-    		//将要删除的元素和最后一个元素互换
+    	//将要删除的元素和最后一个元素互换
 		set[v[count-1]] = set[val];
 		swap(v[count-1], v[set[val]]);
 		last--;
