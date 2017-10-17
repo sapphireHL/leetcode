@@ -7,7 +7,6 @@ public:
         for(auto w:words) {
             f[w]++;
         }
-        for(auto i:f) cout<<i.first<<endl;
         for(auto i:f){
             f_reverse[i.second].push_back(i.first);
         }
